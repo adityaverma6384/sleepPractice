@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>D3 Test</title>
-        <script type="text/javascript" src="./d3.v3.js"></script>
+        <script type="text/javascript" src="./sleepPractice/d3.v3.js"></script>
     </head>
     <body>
 
@@ -16,22 +16,24 @@
             // y is %
             // colors for mood
             // Your beautiful D3 code will go here
-            var svgWidth = 500;
-            var svgHeight = 500;
+            var svgWidth = 1000;
+            var svgHeight = 500;          
 
-            var foo = [1, 2, 3];
-
-            var sleepDict = [{"sleeptime": 6.27, 
+            /*
+            var sleeps = [{"sleeptime": 6.27, 
                                 "notes": "", 
                                 "feelings": "", 
                                 "asleep": "2013-01-11 01:59:24", 
                                 "awoke": "2013-01-11 08:15:30", 
                                 "quality": 68},
                                 {"sleeptime": 25,
-                                 "quality":20,
+                                 "quality":11,
                                 "asleep": "asleep", 
                                 "awoke": "awoke", 
                                 }];
+            */
+
+            var sleeps = [{"sleeptime":"6:16","notes":"","feelings":"","asleep":"2013-01-11 01:59:24","awoke":"2013-01-11 08:15:30","quality":"68%"},{"sleeptime":"7:08","notes":"Drank coffee:Light drinking:Stressful day","feelings":":|","asleep":"2013-01-12 01:38:37","awoke":"2013-01-12 08:47:05","quality":"74%"},{"sleeptime":"8:33","notes":"Drank coffee:Light drinking","feelings":":|","asleep":"2013-01-13 00:57:40","awoke":"2013-01-13 09:30:48","quality":"93%"},{"sleeptime":"7:43","notes":"Ate late:Sex :)","feelings":":|","asleep":"2013-01-14 01:13:21","awoke":"2013-01-14 08:57:12","quality":"86%"},{"sleeptime":"7:07","notes":"Drank tea:Sex :)","feelings":":)","asleep":"2013-01-15 01:44:03","awoke":"2013-01-15 08:51:22","quality":"80%"},{"sleeptime":"8:02","notes":"Light drinking:Stressful day","feelings":":)","asleep":"2013-01-16 00:45:08","awoke":"2013-01-16 08:47:54","quality":"82%"},{"sleeptime":"7:03","notes":"Drank coffee:Medium drinking","feelings":":|","asleep":"2013-01-17 01:56:59","awoke":"2013-01-17 09:00:39","quality":"74%"},{"sleeptime":"7:48","notes":"","feelings":":|","asleep":"2013-01-18 01:17:00","awoke":"2013-01-18 09:05:59","quality":"82%"},{"sleeptime":"5:31","notes":"Medium drinking:Sex :)","feelings":":)","asleep":"2013-01-19 03:27:34","awoke":"2013-01-19 08:59:01","quality":"56%"},{"sleeptime":"7:33","notes":"Drank tea:Sex :)","feelings":":|","asleep":"2013-01-20 01:19:03","awoke":"2013-01-20 08:52:10","quality":"77%"},{"sleeptime":"8:05","notes":"Worked out","feelings":":)","asleep":"2013-01-21 00:45:07","awoke":"2013-01-21 08:50:41","quality":"87%"},{"sleeptime":"6:57","notes":"Ate late:Drank tea","feelings":":)","asleep":"2013-01-22 02:01:41","awoke":"2013-01-22 08:58:54","quality":"77%"},{"sleeptime":"8:22","notes":"Drank tea:Light drinking","feelings":":|","asleep":"2013-01-23 00:37:42","awoke":"2013-01-23 09:00:15","quality":"83%"},{"sleeptime":"7:59","notes":"Drank tea:Light drinking:Stressful day","feelings":":(","asleep":"2013-01-25 01:00:59","awoke":"2013-01-25 09:00:33","quality":"75%"},{"sleeptime":"8:05","notes":"Light drinking","feelings":":|","asleep":"2013-01-28 00:55:01","awoke":"2013-01-28 09:00:28","quality":"89%"},{"sleeptime":"2:27","notes":"Drank tea:Medium drinking","feelings":"","asleep":"2013-01-29 01:00:28","awoke":"2013-01-29 03:27:28","quality":"28%"},{"sleeptime":"8:03","notes":"","feelings":":)","asleep":"2013-02-01 00:48:54","awoke":"2013-02-01 08:52:35","quality":"81%"},{"sleeptime":"6:30","notes":"Drank coffee","feelings":":|","asleep":"2013-02-02 02:28:16","awoke":"2013-02-02 08:59:13","quality":"73%"},{"sleeptime":"7:09","notes":"Light drinking","feelings":":)","asleep":"2013-02-04 01:51:31","awoke":"2013-02-04 09:01:05","quality":"78%"},{"sleeptime":"7:22","notes":"Drank coffee:Light drinking","feelings":":)","asleep":"2013-02-05 01:22:00","awoke":"2013-02-05 08:44:44","quality":"84%"},{"sleeptime":"6:52","notes":"Medium drinking","feelings":":|","asleep":"2013-02-07 02:37:55","awoke":"2013-02-07 09:30:38","quality":"73%"},{"sleeptime":"8:05","notes":"Drank tea:Light drinking","feelings":":)","asleep":"2013-02-08 00:54:55","awoke":"2013-02-08 09:00:16","quality":"92%"},{"sleeptime":"6:59","notes":"Drank coffee:Sex :)","feelings":":)","asleep":"2013-02-11 02:28:07","awoke":"2013-02-11 09:27:56","quality":"76%"},{"sleeptime":"5:55","notes":"Drank tea:Light drinking","feelings":":|","asleep":"2013-02-12 03:05:39","awoke":"2013-02-12 09:00:50","quality":"66%"},{"sleeptime":"7:47","notes":"Drank tea","feelings":":|","asleep":"2013-02-13 01:13:52","awoke":"2013-02-13 09:01:18","quality":"87%"},{"sleeptime":"9:48","notes":"Light drinking","feelings":":|","asleep":"2013-02-15 23:12:37","awoke":"2013-02-16 09:00:53","quality":"93%"},{"sleeptime":"7:48","notes":"Drank coffee:Medium drinking:Sex :)","feelings":":)","asleep":"2013-02-18 00:41:15","awoke":"2013-02-18 08:30:08","quality":"83%"},{"sleeptime":"7:16","notes":"Drank coffee:Light drinking","feelings":":|","asleep":"2013-02-19 00:40:55","awoke":"2013-02-19 07:57:52","quality":"78%"},{"sleeptime":"7:21","notes":"Drank coffee:Drank tea:Light drinking:Sex :)","feelings":":|","asleep":"2013-02-21 00:37:18","awoke":"2013-02-21 07:58:58","quality":"82%"},{"sleeptime":"2:45","notes":"","feelings":":|","asleep":"2013-03-01 05:43:30","awoke":"2013-03-01 08:29:30","quality":"34%"},{"sleeptime":"7:17","notes":"Worked out","feelings":":|","asleep":"2013-03-04 01:02:32","awoke":"2013-03-04 08:19:57","quality":"89%"},{"sleeptime":"7:45","notes":"Drank coffee:Drank tea","feelings":":|","asleep":"2013-03-05 00:28:52","awoke":"2013-03-05 08:14:04","quality":"33%"},{"sleeptime":"7:02","notes":"Drank coffee:Drank tea","feelings":":|","asleep":"2013-03-07 00:57:28","awoke":"2013-03-07 07:59:53","quality":"75%"},{"sleeptime":"7:07","notes":"Drank tea","feelings":":|","asleep":"2013-03-08 00:23:36","awoke":"2013-03-08 07:30:42","quality":"77%"},{"sleeptime":"8:37","notes":"Sex :)","feelings":":|","asleep":"2013-03-09 23:01:03","awoke":"2013-03-10 08:38:58","quality":"79%"},{"sleeptime":"8:04","notes":"","feelings":":)","asleep":"2013-03-10 23:51:26","awoke":"2013-03-11 07:55:39","quality":"77%"},{"sleeptime":"8:35","notes":"Drank tea:Sex :):Stressful day","feelings":":)","asleep":"2013-03-11 23:53:53","awoke":"2013-03-12 08:29:50","quality":"71%"},{"sleeptime":"7:32","notes":"Drank tea","feelings":":)","asleep":"2013-03-13 00:58:04","awoke":"2013-03-13 08:30:13","quality":"76%"},{"sleeptime":"7:49","notes":"Drank tea","feelings":":)","asleep":"2013-03-14 00:40:37","awoke":"2013-03-14 08:30:17","quality":"71%"},{"sleeptime":"6:33","notes":"Drank tea:Light drinking","feelings":":|","asleep":"2013-03-19 01:57:43","awoke":"2013-03-19 08:30:44","quality":"62%"},{"sleeptime":"7:08","notes":"Drank coffee","feelings":":)","asleep":"2013-03-20 01:07:25","awoke":"2013-03-20 08:15:27","quality":"70%"},{"sleeptime":"7:15","notes":"Drank coffee","feelings":":)","asleep":"2013-03-24 02:01:39","awoke":"2013-03-24 09:16:48","quality":"72%"},{"sleeptime":"8:12","notes":"Drank coffee:Stressful day","feelings":":)","asleep":"2013-03-25 00:13:52","awoke":"2013-03-25 08:26:21","quality":"85%"},{"sleeptime":"8:33","notes":"Drank coffee","feelings":":)","asleep":"2013-03-26 23:56:52","awoke":"2013-03-27 08:30:50","quality":"89%"},{"sleeptime":"7:26","notes":"Drank coffee:Drank tea:Sex :)","feelings":":)","asleep":"2013-03-29 00:26:48","awoke":"2013-03-29 07:53:32","quality":"84%"},{"sleeptime":"7:37","notes":"Drank coffee:Light drinking:Sex :)","feelings":":)","asleep":"2013-03-30 00:50:49","awoke":"2013-03-30 08:27:58","quality":"88%"},{"sleeptime":"8:07","notes":"Drank coffee:Heavy drinking:Sex :)","feelings":":)","asleep":"2013-03-31 00:59:47","awoke":"2013-03-31 09:07:38","quality":"89%"},{"sleeptime":"7:11","notes":"Drank coffee:Sex :)","feelings":":|","asleep":"2013-04-01 01:18:05","awoke":"2013-04-01 08:29:52","quality":"57%"},{"sleeptime":"7:42","notes":"Drank coffee:Light drinking","feelings":":|","asleep":"2013-04-02 00:45:47","awoke":"2013-04-02 08:28:03","quality":"70%"},{"sleeptime":"7:07","notes":"Drank coffee:Light drinking","feelings":":|","asleep":"2013-04-03 01:22:04","awoke":"2013-04-03 08:29:59","quality":"73%"},{"sleeptime":"8:18","notes":"Drank coffee:Medium drinking","feelings":":|","asleep":"2013-04-04 00:10:56","awoke":"2013-04-04 08:29:39","quality":"92%"},{"sleeptime":"9:09","notes":"Drank coffee:Medium drinking","feelings":":)","asleep":"2013-04-06 00:20:45","awoke":"2013-04-06 09:30:12","quality":"89%"},{"sleeptime":"8:38","notes":"Heavy drinking","feelings":":|","asleep":"2013-04-07 00:52:14","awoke":"2013-04-07 09:30:37","quality":"95%"},{"sleeptime":"6:37","notes":"Ate late:Drank coffee","feelings":":|","asleep":"2013-04-08 01:54:00","awoke":"2013-04-08 08:31:14","quality":"72%"},{"sleeptime":"8:29","notes":"Light drinking","feelings":":)","asleep":"2013-04-09 00:01:33","awoke":"2013-04-09 08:30:51","quality":"87%"},{"sleeptime":"7:30","notes":"","feelings":":|","asleep":"2013-04-09 23:58:58","awoke":"2013-04-10 07:29:55","quality":"84%"},{"sleeptime":"8:24","notes":"Light drinking:Other activities:Stressful day","feelings":":)","asleep":"2013-04-11 00:06:59","awoke":"2013-04-11 08:31:31","quality":"80%"},{"sleeptime":"7:43","notes":"Medium drinking","feelings":":|","asleep":"2013-04-11 23:46:36","awoke":"2013-04-12 07:30:23","quality":"85%"},{"sleeptime":"6:02","notes":"Drank coffee:Light drinking","feelings":":|","asleep":"2013-04-13 02:28:28","awoke":"2013-04-13 08:30:37","quality":"68%"},{"sleeptime":"6:48","notes":"Drank coffee","feelings":":)","asleep":"2013-04-14 01:41:55","awoke":"2013-04-14 08:30:13","quality":"76%"},{"sleeptime":"6:37","notes":"Drank coffee","feelings":":)","asleep":"2013-04-15 01:50:38","awoke":"2013-04-15 08:27:38","quality":"67%"},{"sleeptime":"6:35","notes":"Drank coffee","feelings":":(","asleep":"2013-04-16 00:47:58","awoke":"2013-04-16 07:23:26","quality":"74%"},{"sleeptime":"7:18","notes":"Medium drinking","feelings":":|","asleep":"2013-04-17 01:11:04","awoke":"2013-04-17 08:29:53","quality":"83%"},{"sleeptime":"7:49","notes":"Drank coffee:Sex :)","feelings":":|","asleep":"2013-04-18 00:40:36","awoke":"2013-04-18 08:29:48","quality":"69%"},{"sleeptime":"8:03","notes":"Drank coffee","feelings":":)","asleep":"2013-04-19 00:04:22","awoke":"2013-04-19 08:07:33","quality":"85%"},{"sleeptime":"5:21","notes":"","feelings":":|","asleep":"2013-04-20 01:23:46","awoke":"2013-04-20 06:45:25","quality":"59%"},{"sleeptime":"7:45","notes":"Drank coffee","feelings":":)","asleep":"2013-04-21 00:49:31","awoke":"2013-04-21 08:34:59","quality":"73%"},{"sleeptime":"8:07","notes":"Drank coffee","feelings":":|","asleep":"2013-04-23 00:22:23","awoke":"2013-04-23 08:30:08","quality":"81%"},{"sleeptime":"6:41","notes":"Drank tea:Light drinking","feelings":":|","asleep":"2013-04-24 00:50:27","awoke":"2013-04-24 07:31:43","quality":"75%"},{"sleeptime":"7:47","notes":"Drank tea:Medium drinking","feelings":":)","asleep":"2013-04-25 00:19:19","awoke":"2013-04-25 08:07:09","quality":"72%"},{"sleeptime":"6:05","notes":"Drank coffee:Medium drinking:Sex :)","feelings":":|","asleep":"2013-04-27 02:25:05","awoke":"2013-04-27 08:30:11","quality":"65%"},{"sleeptime":"7:13","notes":"Drank coffee","feelings":":)","asleep":"2013-04-28 01:47:04","awoke":"2013-04-28 09:00:31","quality":"74%"},{"sleeptime":"7:47","notes":"Drank coffee:Sex :)","feelings":":)","asleep":"2013-04-29 00:37:20","awoke":"2013-04-29 08:25:06","quality":"75%"},{"sleeptime":"8:05","notes":"","feelings":":)","asleep":"2013-04-30 00:14:56","awoke":"2013-04-30 08:20:44","quality":"74%"},{"sleeptime":"6:30","notes":"Drank tea:Light drinking:Sex :)","feelings":":|","asleep":"2013-05-01 01:30:15","awoke":"2013-05-01 08:00:29","quality":"69%"},{"sleeptime":"7:55","notes":"Drank tea:Heavy drinking:Worked out","feelings":":)","asleep":"2013-05-02 00:34:21","awoke":"2013-05-02 08:29:36","quality":"83%"},{"sleeptime":"8:39","notes":"Drank coffee:Light drinking:Sex :)","feelings":":|","asleep":"2013-05-02 23:50:32","awoke":"2013-05-03 08:30:25","quality":"48%"},{"sleeptime":"7:45","notes":"Light drinking:Sex :)","feelings":":)","asleep":"2013-05-04 00:42:14","awoke":"2013-05-04 08:27:45","quality":"75%"},{"sleeptime":"8:29","notes":"Medium drinking","feelings":":)","asleep":"2013-05-06 00:01:21","awoke":"2013-05-06 08:31:08","quality":"79%"},{"sleeptime":"7:39","notes":"Drank tea","feelings":":|","asleep":"2013-05-07 00:50:42","awoke":"2013-05-07 08:30:32","quality":"86%"},{"sleeptime":"7:40","notes":"Heavy drinking","feelings":":|","asleep":"2013-05-08 00:33:08","awoke":"2013-05-08 08:14:06","quality":"51%"},{"sleeptime":"9:14","notes":"Drank tea","feelings":":|","asleep":"2013-05-08 23:16:23","awoke":"2013-05-09 08:30:35","quality":"100%"},{"sleeptime":"8:32","notes":"Drank coffee:Sex :)","feelings":":|","asleep":"2013-05-12 23:28:07","awoke":"2013-05-13 08:00:47","quality":"76%"},{"sleeptime":"6:22","notes":"Ate late:Drank coffee:Stressful day","feelings":":|","asleep":"2013-05-14 00:38:14","awoke":"2013-05-14 07:01:08","quality":"65%"},{"sleeptime":"8:59","notes":"Light drinking:Stressful day","feelings":":)","asleep":"2013-05-14 23:14:41","awoke":"2013-05-15 08:14:04","quality":"73%"},{"sleeptime":"6:46","notes":"Ate late:Drank coffee:Medium drinking","feelings":":)","asleep":"2013-05-16 02:15:07","awoke":"2013-05-16 09:01:18","quality":"66%"},{"sleeptime":"7:29","notes":"Light drinking:Sex :)","feelings":":|","asleep":"2013-05-17 01:01:34","awoke":"2013-05-17 08:30:54","quality":"82%"},{"sleeptime":"7:06","notes":"Light drinking:Stressful day","feelings":"","asleep":"2013-05-17 23:53:30","awoke":"2013-05-18 07:00:24","quality":"76%"},{"sleeptime":"7:48","notes":"Drank coffee:Stressful day","feelings":":|","asleep":"2013-05-18 23:41:20","awoke":"2013-05-19 07:30:08","quality":"83%"},{"sleeptime":"5:53","notes":"Ate late:Light drinking","feelings":":)","asleep":"2013-05-25 01:52:35","awoke":"2013-05-25 07:46:26","quality":"68%"},{"sleeptime":"7:28","notes":"Light drinking","feelings":":|","asleep":"2013-06-17 00:41:36","awoke":"2013-06-17 08:09:42","quality":"83%"},{"sleeptime":"7:01","notes":"Drank coffee:Light drinking:Sex :)","feelings":":|","asleep":"2013-06-18 01:21:19","awoke":"2013-06-18 08:22:32","quality":"71%"},{"sleeptime":"7:36","notes":"Drank coffee:Drank tea:Light drinking","feelings":":|","asleep":"2013-06-26 00:43:41","awoke":"2013-06-26 08:19:45","quality":"76%"},{"sleeptime":"6:44","notes":"Ate late:Drank tea:Light drinking","feelings":":|","asleep":"2013-06-27 01:28:39","awoke":"2013-06-27 08:12:53","quality":"65%"},{"sleeptime":"7:32","notes":"Light drinking:Other activities","feelings":":|","asleep":"2013-06-28 00:58:14","awoke":"2013-06-28 08:30:56","quality":"64%"},{"sleeptime":"6:51","notes":"Drank coffee:Light drinking:Stressful day","feelings":":)","asleep":"2013-07-01 01:33:09","awoke":"2013-07-01 08:24:20","quality":"74%"},{"sleeptime":"5:48","notes":"Drank coffee:Medium drinking","feelings":":|","asleep":"2013-07-04 02:31:32","awoke":"2013-07-04 08:19:40","quality":"62%"},{"sleeptime":"6:57","notes":"Drank coffee:Medium drinking","feelings":":|","asleep":"2013-07-09 01:21:40","awoke":"2013-07-09 08:18:46","quality":"72%"},{"sleeptime":"7:47","notes":"Drank coffee","feelings":":|","asleep":"2013-07-10 00:42:39","awoke":"2013-07-10 08:29:44","quality":"87%"},{"sleeptime":"6:43","notes":"Drank coffee:Medium drinking","feelings":":|","asleep":"2013-07-30 01:47:24","awoke":"2013-07-30 08:30:34","quality":"72%"}];
         
             // creates svg blocks
             var svg = d3.select("body")
@@ -39,21 +41,33 @@
                         .attr("width", svgWidth)
                         .attr("height", svgHeight);
 
+            console.log("console log 1 " + parseInt(sleeps[0].quality));
+            console.log("console log 2 " + sleeps[0].sleeptime);            
+
             // var xScale = d3.scale.linear()  
-            //     .domain([0, d3.max(sleepDict, function(data){return data.asleep;})])
-            //     .range([0, svgWidth]);
+            //     .domain([0,sleeps.length])
+            //     .range([0, sleeps.length]]);
 
-            //  var yScale = d3.scale.linear()  
-            //     .domain([0, d3.max(sleepDict, function(data){return data.awoke;})])
-            //     .range([0, svgHeight]);  
+             // var yScale = d3.scale.linear()  
+             //    .domain([0, d3.max(sleeps, function(data){return data.quality;})])
+             //    .range([0, 100]);  
 
+            function convertSleeptimetoInt(data){
+                var time = data.sleeptime.split(":");
+                var hoursAsleep = time[0] + (time[1]/60);
+                return hoursAsleep;
+            }
+         
             var xAxis = d3.svg.axis()
-                        // .data(sleepDict)
+                        .scale(100)             
                         .orient("bottom");  
 
-
+            var yAxis = d3.svg.axis()
+                        .scale(100)           
+                        .orient("bottom");            
+                        
             var labels = svg.selectAll("text")
-                .data(sleepDict)
+                .data(sleeps)
                 .enter()
                 .append("text")
                 .text(function(data){
@@ -63,27 +77,29 @@
                     return (i * 50) + 30;
                 })   
                 .attr("y", function(data){
-                    return data.quality + 100;
+                    return parseInt(data.quality) + 100;
                 })
                 .attr("font-family", "sans-serif")
                 .attr("font-size", "11px")
                 .attr("fill", "red");  
 
             var circles = svg.selectAll("circle")
-                .data(sleepDict)
+                .data(sleeps)
                 .enter()
                 .append("circle")  
                 .attr("cx", function(data, i){
-                        return (i * 50) + 30;
+                    return (i * 30) + 30;
                 })  
                 .attr("cy", function(data){
-                    return data.quality + 100;
+                    return parseInt(data.quality) * 5 - 100;
                 })
                 .attr("r", function(data){
-                    return (data.sleeptime/2);
+                    return (convertSleeptimetoInt(data))/5;
                 }); 
 
-            svg.append("g").call(xAxis);             
+            // svg.append("g").call(xAxis);  
+
+                       
 
         </script>
     </body>
