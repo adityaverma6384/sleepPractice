@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>D3 Test</title>
+        <script type="text/javascript" src="./d3.v3.js"></script>
+    </head>
+    <body>
+
+        <circle cx="250" cy="25" r=data.sleeptime/>   
+       
+        <script type="text/javascript">
+            // scatterplot
+            // size of circle is hours, click to get notes
+            // x = date
+            // y is %
+            // colors for mood
+            // Your beautiful D3 code will go here
+            var svgWidth = 500;
+            var svgHeight = 500;
+
+            var foo = [1, 2, 3];
+
+            var sleepDict = [{"sleeptime": 6.27, 
+                                "notes": "", 
+                                "feelings": "", 
+                                "asleep": "2013-01-11 01:59:24", 
+                                "awoke": "2013-01-11 08:15:30", 
+                                "quality": 68},
+                                {"sleeptime": 25,
+                                 "quality":20,
+                                "asleep": "asleep", 
+                                "awoke": "awoke", 
+                                }];
+        
+            // creates svg blocks
+            var svg = d3.select("body")
+                        .append("svg")
+                        .attr("width", svgWidth)
+                        .attr("height", svgHeight);
+
+            // var xScale = d3.scale.linear()  
+            //     .domain([0, d3.max(sleepDict, function(data){return data.asleep;})])
+            //     .range([0, svgWidth]);
+
+            //  var yScale = d3.scale.linear()  
+            //     .domain([0, d3.max(sleepDict, function(data){return data.awoke;})])
+            //     .range([0, svgHeight]);  
+
+            var xAxis = d3.svg.axis()
+                        // .data(sleepDict)
+                        .orient("bottom");  
+
+
+            var labels = svg.selectAll("text")
+                .data(sleepDict)
+                .enter()
+                .append("text")
+                .text(function(data){
+                    return data.asleep + " , " + data.awoke;
+                })
+                .attr("x", function(data, i){
+                    return (i * 50) + 30;
+                })   
+                .attr("y", function(data){
+                    return data.quality + 100;
+                })
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "11px")
+                .attr("fill", "red");  
+
+            var circles = svg.selectAll("circle")
+                .data(sleepDict)
+                .enter()
+                .append("circle")  
+                .attr("cx", function(data, i){
+                        return (i * 50) + 30;
+                })  
+                .attr("cy", function(data){
+                    return data.quality + 100;
+                })
+                .attr("r", function(data){
+                    return (data.sleeptime/2);
+                }); 
+
+            svg.append("g").call(xAxis);             
+
+        </script>
+    </body>
+</html>
